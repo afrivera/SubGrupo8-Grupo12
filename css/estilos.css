@@ -17,7 +17,17 @@ body{
     height:80px ;
 }
 
-.contenedor{
+/* .informacion {
+    width: 200px;
+    color: white;
+    background-color: #3f37c0;
+} */
+
+.main {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.contenedor{    
     margin: 50px auto;
     width: 400px;
     padding: 30px;
@@ -30,6 +40,13 @@ body{
     font-size: 30px;
     color: #4cc9f0;
     text-align: center;
+}
+.contenedor p{
+    margin: 0 0 30px;
+    padding: 0;
+    font-size: 30px;
+    color: #4cc9f0;
+    text-align: left;
 }
 .contenedor .elemento label{
     color: #fff;    
