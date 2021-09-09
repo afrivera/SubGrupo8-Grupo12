@@ -7,6 +7,16 @@ body{
     padding: 0;
     background: linear-gradient(#7209b7, #3f37c0);
 }
+
+.cabecera{
+    height: 80px;
+    background-color: #212529;
+}
+
+.imagen-logo img{
+    height:80px ;
+}
+
 .contenedor{
     margin: 50px auto;
     width: 400px;
