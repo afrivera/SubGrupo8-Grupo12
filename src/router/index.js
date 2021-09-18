@@ -12,6 +12,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/mi-lista',
+    name: 'MiLista',
+    component: MiLista
+  },
+  {
     path: '/perfil',
     name: 'Perfil',
     // route level code-splitting
