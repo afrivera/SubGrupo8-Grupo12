@@ -1,0 +1,104 @@
+
+body{
+    font-family: 'Glory', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(#7209b7, #3f37c0);
+}
+
+.header{
+    display: flex;
+    padding: 20px 30px;
+    height: 80px;
+    background-color: #212529;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+}
+
+.header ul{
+    display: flex;
+}
+
+.header li {
+    padding-right: 20px;
+    list-style: none;
+}
+
+.header li a {
+    color: #4cc9f0;
+    text-decoration: none;
+}
+
+.imagen-logo img{
+    height:80px ;
+}
+
+.main {
+    display: flex;
+    height:max-content;
+    /* align-items: center;   */
+}
+
+.informacion {
+    height: auto;
+}
+
+.registro {
+    height: fit-content;
+    
+}
+.container{   
+    margin: 50px auto;
+    width: 400px;
+    padding: 30px;
+    background: rgba(0,0,0,.5);
+    border-radius: 10px; 
+}
+.container h2{
+    margin: 0 0 30px;
+    padding: 0;
+    font-size: 30px;
+    color: #4cc9f0;
+    text-align: center;
+}
+.container p{
+    margin: 0 0 30px;
+    padding: 0;
+    font-size: 25px;
+    color: #4cc9f0;
+    text-align: left;
+}
+.login-buttons {
+    text-align: center;
+}
+.elemento label{
+    color: #4cc9f0;    
+}
+.elemento input{
+    width: 100%;
+    padding: 10px 0;
+    color: #fff;
+    background: transparent;
+    border: 1px solid #4cc9f0;
+    margin-bottom: 30px;
+}
+
+.elemento input[type="submit"]{
+    background-color: #f72585;
+    border: none;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 15px;
+    margin-top: 30px;
+}
+.elemento button{
+    width: 60%;
+    margin: 5px;
+    padding: 10px 0;
+    color: #fff;
+    background: #f72585 ;
+    border: 1;
+    border-bottom: 1px solid #fff;    
+}

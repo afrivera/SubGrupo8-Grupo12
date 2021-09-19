@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/estilos.css">
+        <title>BooksXchange</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Glory:wght@100&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="header">
+            <div class="imagen-logo">
+                <a href="index.html"><img src="imagenes/Logo.png" alt=""></a>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Perfil</a></li>
+                    <li><a href="">Mi Lista</a></li>
+                    <li><a href="">Buscar</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="main">
+            <div class="container registro">
+                <h2 class="titulo">Registrate</h2>
+                <form id="formulario" method="POST">
+                    <div class="elemento">
+                        <label for="usuario">Usuario</label>
+                        <input type="text" id="usuario" name="usuario" required="true">
+                    </div>
+                    <div class="elemento">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" required="true">
+                    </div>
+                    <div class="elemento">
+                        <input type="submit" value="Enviar" />
+                    </div>
+                </form>
+                <div class="login-buttons">
+                    <div class="elemento">
+                        <button>Inicio de Sesion con Gmail</button>
+                    </div>
+                    <div class="elemento">
+                        <button>loguito</button>
+                    </div>
+                    <div class="elemento">
+                        <button>New User</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container informulariocion">
+                <h2 class="titulo">Quienes somos</h2>
+                <p>BooksXchange es una plataformulario de intercambio de libros, podrás seleccionar y
+                calificar tus favoritos y cuando alguien acepte alguno de tus libros lo podrás
+                intercambiar con los de tu lista de favoritos.</p>
+                <iframe width="400" height="200" src="https://www.youtube.com/embed/w47z_wz6XBA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+        </div>
+    </body>
+</html>
