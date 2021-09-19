@@ -1,5 +1,8 @@
 <template>
+
+
   <div class="home">
+    <h4> HOLA</h4>
     <Header/>
       <div class="main">
             <div class="container registro">
