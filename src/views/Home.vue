@@ -39,18 +39,21 @@
             </div>
             
         </div>
+        <Footer></Footer>
   </div>
 </template>
 
 <script>
 
 // @ is an alias to /src
-import Header from '@/components/Header'
+import Header from '@/components/Header' 
+import Footer from '@/components/Footer' 
 
 export default {
   name: 'Home',
   components: {
-    Header
+    Header,
+    Footer
   }
 }
 </script>
@@ -65,7 +68,7 @@ export default {
 .main {
     display: flex;
     height:max-content;
-    /* align-items: center;   */
+    align-items: center;
 }
 
 .informacion {
