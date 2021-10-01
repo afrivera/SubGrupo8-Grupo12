@@ -7,7 +7,7 @@
             <p>seccion view</p>
         </v-main>
 
-        <FooterView/>
+        <FooterView/>        
 
     </v-container>
 

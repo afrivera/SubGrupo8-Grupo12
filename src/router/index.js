@@ -11,6 +11,7 @@ import Home from '../views/home/Home.vue'
 import PerfilView from '../views/home/PerfilView.vue'
 import AddBook from '../views/home/AddBook.vue'
 import LytSPA from '../layouts/LytSPA.vue'
+import LogoPrueba from '../views/LogoPrueba.vue'
 
 Vue.use(VueRouter)
 
@@ -54,6 +55,11 @@ const routes = [
         }
       }
     ]
+  },
+  {
+    path: '/logo-nombre',
+    name: 'LogoPrueba',
+    component: LogoPrueba
   },
   {
     path: '/about',

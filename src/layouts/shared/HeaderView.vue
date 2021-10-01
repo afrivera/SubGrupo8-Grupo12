@@ -1,6 +1,11 @@
 <template>
   <v-app-bar app dark dense src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
-      <v-toolbar-title>BOOKXCHANGES SPECIALS </v-toolbar-title>
+        <v-toolbar-title>
+            <!-- <v-avatar size="200"> -->
+                <v-img src="/src/assets/LogoFondo800px.jpg" contain alt=""></v-img>
+            <!-- </v-avatar> -->
+          
+        </v-toolbar-title>
       <v-spacer></v-spacer>
       
 
