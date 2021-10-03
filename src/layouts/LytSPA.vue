@@ -2,6 +2,7 @@
     <v-app>
     <v-container fluid>
         <HeaderView/>
+        
         <v-main>
             <router-view name="allPages"></router-view>
             <p>seccion view</p>
@@ -26,7 +27,6 @@ export default {
         HeaderView,
         FooterView        
     }
-
 }
 </script>
 
