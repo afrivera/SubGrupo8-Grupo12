@@ -50,7 +50,7 @@
                 </div>
                 <div class="d-flex mt-5">
                   <span> ¿No tienes una cuenta?
-                    <v-btn  text color="primary" class="text-none px-2 __btn-login-text" @click="goToSignup()">
+                    <v-btn  text color="primary" class="text-none px-2 __btn-login-text" :to="{name:'SignUp'}">
                     Crear Cuenta
                   </v-btn>
                   </span>                                                    

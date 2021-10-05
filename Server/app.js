@@ -1,8 +1,3 @@
-/* const express = require('express');
-const morgan = require('morgan');
-const cors = require('cors');
-const path = require('path'); */
-
 import express from 'express';
 import morgan from 'morgan';
 import cors  from 'cors';
@@ -12,8 +7,8 @@ const app = express();
 
 //conexión base de datos
 const mongoose = require('mongoose');
-const uri = 'mongodb://localhost:27017/bookXchange';
-//const uri = 'mongodb+srv://miguepery:vtOtO9kxjCkf896c@cluster0.cdzba.mongodb.net/bookXchange?retryWrites=true&w=majority'
+//const uri = 'mongodb://localhost:27017/bookXchange';
+const uri = 'mongodb+srv://miguepery:vtOtO9kxjCkf896c@cluster0.cdzba.mongodb.net/bookXchange?retryWrites=true&w=majority';
 
 const options = {useNewUrlParser: true, useUnifiedTopology: true};
 
@@ -46,9 +41,7 @@ app.use(history());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Puerto
-/* app.listen(3000, function(){
-    console.log('Server Up');
-}); */
+
 app.set('puerto', process.env.PORT || 3000);
 app.listen(app.get('puerto'), function(){
     console.log('Puerto actual: ' + app.get('puerto'));

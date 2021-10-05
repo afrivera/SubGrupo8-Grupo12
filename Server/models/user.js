@@ -1,15 +1,13 @@
 import mongoose from "mongoose";
-const Schema = mongoose.Schema;
 
 const uniqueValidator = require('mongoose-unique-validator');
-
-
 
 const roles= {
     values: ['Admin', 'Usuario'],
     msg: '{VALUE} rol no válido' 
 }
 
+const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: {type: String, required:[true, 'Nombre Obligatorio'],  },
     email: {
@@ -30,7 +28,7 @@ userSchema.methods.toJSON = function() {
     const obj = this.toObject();
     delete obj.password;
     return obj;
-   }
+}
 
 //convertir a modelo
 

@@ -1,12 +1,9 @@
 <template>
-    <v-app-bar app dark dense src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
-        <v-toolbar-title> 
-            
-         BookXchange            
-        </v-toolbar-title>       
+    <v-app-bar app dark class="blue darken-3 white--text ">         
+        <v-row >
+            <v-img  max-width="200" contain src="/src/assets/LogoFondo800px.jpg" alt="BookXchange"></v-img>
+        </v-row> 
         
-        <v-spacer></v-spacer>
-
         <!-- <UserLogged/> -->
         <template v-slot:extension>
             <v-tabs model="optionSelected align-with-title">

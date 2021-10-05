@@ -1,35 +1,51 @@
-<template>
-    
-    <v-app >        
+<template>    
+    <v-app >                
         <v-app-bar app class="blue darken-3" >
-            <v-col >
-                <v-img  max-width="200" contain src = "../assets/LogoFondo800px.jpg"></v-img>
-            </v-col>
-            
-            <Menu/>
+            <v-row >
+                <v-img  max-width="200" src="../assets/LogoNoFondo800px.png" alt="BookXchange"></v-img>
+            </v-row>             
+            <v-tabs centered class="ml-n9" color="white darken-1" >
+                <v-tab v-for="link in links" :key="link" v-text="link.title" :to="link.route">
+                    {{ link }}
+                </v-tab>
+            </v-tabs>
         </v-app-bar >
 
-        <v-main  fluid class="logo" >        
+        <v-main  fluid class="logo" > 
             <v-row align="center" justify="center">
                 <v-col cols="12" sm="6" md="5">
                     <router-view name="allLog"></router-view>
                 </v-col>
-            </v-row>
-        <FooterView/>
+            </v-row>                
         </v-main>
+
+        <FooterView/>
     </v-app>
 
 </template>
 
 vue <script>
 import FooterView from './shared/FooterView.vue'
-import Menu from '../components/Menu.vue'
 
 export default {
+    data: () => ({
+      links: [
+        {
+            title: 'Acerca de Nosotros',
+            route: '/about'
+        }, 
+        {
+            title: 'Registrate',
+            route: 'login'
+        }
+      ]
+      
+    }),
+
     name: 'LytAuth',
+    
     components:{
-        FooterView,
-        Menu        
+        FooterView
     }
 }
 </script>
