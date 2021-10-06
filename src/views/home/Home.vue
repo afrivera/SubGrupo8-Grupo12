@@ -17,7 +17,7 @@
             </v-card-title>
 
             <v-card-subtitle>
-              {{book.author}}1,000 miles of wonder
+              {{book.author}}
             </v-card-subtitle>
 
             <v-card-actions>
