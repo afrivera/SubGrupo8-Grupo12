@@ -19,7 +19,10 @@
             </v-row>                
         </v-main>
 
-        <FooterView/>
+        <v-footer>
+            <FooterView/>
+        </v-footer>
+
     </v-app>
 
 </template>

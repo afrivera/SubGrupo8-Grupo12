@@ -1,5 +1,5 @@
 <template>
-  <v-footer dark padless  >
+  <v-footer dark padless class="mt-10" >
     <v-row class="blue darken-3 white--text text-center">
       <v-card-text>
         <v-btn

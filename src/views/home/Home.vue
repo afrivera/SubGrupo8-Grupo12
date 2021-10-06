@@ -68,7 +68,6 @@
     }),
     created(){
       this.bookList()
-
     },
     methods:{
       bookList(){
