@@ -9,7 +9,9 @@
           icon
         >          
           <a :href="icon.url" :target="icon.target">
-            <v-icon size="30px">{{ icon.name }}</v-icon>
+            <v-icon size="30px">
+              {{ icon.name }}
+            </v-icon>
           </a>
           
         </v-btn>

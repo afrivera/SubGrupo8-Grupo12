@@ -1,7 +1,7 @@
 <template>
   <v-container fluid >
-      <v-row align-content="center" justify="center">
-        <v-col>
+      <v-row >
+        <v-col >
           <v-form
           ref="form"
           v-model="valid"
@@ -10,10 +10,11 @@
             <v-text-field
               v-model="form.title"
               placeholder="Título"
-              :counter="5"        
+              :counter="50"        
               label="Buscar libro"
               required
-            ></v-text-field>   
+            ><v-icon slot="append">mdi-magnify</v-icon> 
+            </v-text-field>   
 
             <!-- <v-btn
               :disabled="!valid"
@@ -23,22 +24,22 @@
             >
               Añadir libro
             </v-btn> -->
-            <v-btn type="submit" color="success" class="mr-4">
+            <v-btn type="submit" color="success" class="mr-5">
               Buscar Libro
             </v-btn>
 
             <v-btn color="error" @click="reset" >
               Limpiar formulario
             </v-btn>
-
         </v-form>
       </v-col>
     </v-row>
+
     <v-row no-gutters>
-      <v-col sm="4" class="pa-3" max-width="344" v-for="item in books" :key="item">
-        <v-card class="pa-1" >
-          <v-img src="require('getPhoto')" >
-            {{item.volumeInfo.imageLinks.thumbnail}}        
+      <v-col sm="5" class="pa-3" max-width="350" v-for="item in books" :key="item">
+        <v-card class="pa-2" >
+          
+          <v-img :src="item.volumeInfo.imageLinks.thumbnail" max-height="300" contain>                
           </v-img>
 
           <v-card-title>
@@ -116,16 +117,16 @@ export default {
         let config = {
           headers:{
             token:this.token
-              }
           }
-          this.axios.post('/new-book', this.form, config)
-            .then(res=>{
-              console.log(res.data);
-                this.$router.push({ name: 'home' })
-            })
-            .catch(e=>{
-              console.log(e.response);
-            })
+        }
+        this.axios.post('/new-book', this.form, config)
+        .then(res=>{
+          console.log(res.data);
+            this.$router.push({ name: 'home' })
+        })
+        .catch(e=>{
+          console.log(e.response);
+        })
       },
       searchBook(){
         const search = this.form.title;
@@ -134,15 +135,12 @@ export default {
         .then (res => {
           console.log(search);
           console.log(res.data.items);
-          this.books = res.data.items
+          this.books = res.data.items;
         })
-        .catch(e=> console.log(e))
-        
+        .catch(e=> console.log(e))        
       }
       
     },
-
-
 }
 </script>
 
