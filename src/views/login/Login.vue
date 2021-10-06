@@ -1,4 +1,4 @@
-<template>  
+<template>
   <v-card class="elevation-3 __b-20">
     <v-card-text>
       <v-container fluid>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="d-flex mt-5">
                   <span> ¿No tienes una cuenta?
-                    <v-btn  text color="primary" class="text-none px-2 __btn-login-text" @click="goToSignup()">
+                    <v-btn  text color="primary" class="text-none px-2 __btn-login-text" :to="{name:'SignUp'}">
                     Crear Cuenta
                   </v-btn>
                   </span>                                                    
@@ -69,16 +69,13 @@
   </v-card>
 </template>
 
-
 <script>
 import {mapActions} from 'vuex';
 
 export default {
-
     name:'Login',
     data() {
         return {
-
           visible: false,
           form: {
               email: '',
@@ -87,6 +84,7 @@ export default {
           msg: ''
         }
     },
+    
     methods: {
       ...mapActions(['saveUser']),
       goToSignup() {
@@ -101,20 +99,19 @@ export default {
               this.msg = e.response.data.msg
             })
       }
-        
 
 
-        /* this.$router.push({ name: 'SignUp' })
-        },
-        async login() {
-          console.log(this.form); */
-        /* try {
-            const { data } = await this.axios.post('/login', this.form)
-            this.$store.dispatch('save_token', data.data)
-            this.$router.push({ name: 'admin' })
-        } catch (e) {
-            console.log(e)
-        } */
+      /* this.$router.push({ name: 'SignUp' })
+      },
+      async login() {
+        console.log(this.form); */
+      /* try {
+          const { data } = await this.axios.post('/login', this.form)
+          this.$store.dispatch('save_token', data.data)
+          this.$router.push({ name: 'admin' })
+      } catch (e) {
+          console.log(e)
+      } */
         
     }
 }

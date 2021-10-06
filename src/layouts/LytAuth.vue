@@ -1,29 +1,59 @@
-<template>  
-    <v-app >
-        <v-container class="fill-heigth" fluid  >
+<template>    
+    <v-app >                
+        <v-app-bar app class="blue darken-3" >
+            <v-row >
+                <v-img  max-width="200" src="../assets/LogoNoFondo800px.png" alt="BookXchange"></v-img>
+            </v-row>             
+            <v-tabs centered class="ml-n9" color="white darken-1" >
+                <v-tab v-for="link in links" :key="link" v-text="link.title" :to="link.route">
+                    {{ link }}
+                </v-tab>
+            </v-tabs>
+        </v-app-bar >
+
+        <v-main  fluid class="logo" > 
             <v-row align="center" justify="center">
                 <v-col cols="12" sm="6" md="5">
                     <router-view name="allLog"></router-view>
-
                 </v-col>
+            </v-row>                
+        </v-main>
 
-            </v-row>
+        <FooterView/>
+    </v-app>
 
-        </v-container>
- </v-app>
-
-<!--   -->
 </template>
 
 vue <script>
+import FooterView from './shared/FooterView.vue'
+
 export default {
-    name: 'LytAuth'
+    data: () => ({
+      links: [
+        {
+            title: 'Acerca de Nosotros',
+            route: '/about'
+        }, 
+        {
+            title: 'Registrate',
+            route: 'login'
+        }
+      ]
+      
+    }),
+
+    name: 'LytAuth',
+    
+    components:{
+        FooterView
+    }
 }
 </script>
 
 <style scoped>
 .logo{
-    background: url('/src/assets/logo.png');
+    
+    background-image: url('../assets/Background.png');
     background-size: cover;
     background-position: center center;
 }

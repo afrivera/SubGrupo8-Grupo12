@@ -24,7 +24,7 @@ const verificarAuth =(req, res, next)=>{
 const verificarAdmin = (req, res,next)=>{
     const rol = req.user.rol
 
-    if(rol=== 'Admin'){
+    if(rol === 'Admin'){
         next();
     }else{
         return res.status(401).json({

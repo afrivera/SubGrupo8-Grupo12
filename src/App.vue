@@ -1,4 +1,3 @@
-import { mapActions } from 'vuex';
 <template>
   <v-app>
     <v-main>
@@ -8,19 +7,18 @@ import { mapActions } from 'vuex';
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+  import {mapActions} from 'vuex'
 
-export default {
-  name: 'App',
-
-  data: () => ({
-    //
-  }),
-  methods:{
-    ...mapActions(['readToken'])
-  },
-  mounted(){
-    this.readToken();
-  }
-};
+  export default {
+    name: 'App',
+    data: () => ({
+      //
+    }),
+    methods:{
+      ...mapActions(['readToken'])
+    },
+    mounted(){
+      this.readToken();
+    }
+  };
 </script>

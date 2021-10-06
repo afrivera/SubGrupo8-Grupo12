@@ -1,16 +1,15 @@
 <template>
     <v-app>
-    <v-container fluid>
-        <HeaderView/>
-        <v-main>
-            <router-view name="allPages"></router-view>
-            <p>seccion view</p>
-        </v-main>
+        <v-container fluid>
+            <HeaderView/>
+            
+            <v-main>
+                <router-view name="allPages"></router-view>
+            </v-main>
 
-        <FooterView/>
+            <FooterView/>        
 
-    </v-container>
-
+        </v-container>
     </v-app>
   
 </template>
@@ -26,7 +25,6 @@ export default {
         HeaderView,
         FooterView        
     }
-
 }
 </script>
 

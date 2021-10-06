@@ -5,7 +5,7 @@
               <v-row>
                 <v-col cols="12" class="text-center">
                   <h3 class="headline">
-                    BOOKXCHANGES
+                    BOOKXCHANGE
                   </h3>
                   <h4 class="subtitle-1 mb-3">
                     Registro

@@ -7,10 +7,10 @@
             class="pa-1"
             max-width="344"        
           >
-          <v-img
-            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-            height="200px"
-          > {{book.imgStatus}}</v-img>
+            <v-img
+              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              height="200px"
+            > {{book.imgStatus}}</v-img>
 
             <v-card-title class="headline">
               {{book.title}}

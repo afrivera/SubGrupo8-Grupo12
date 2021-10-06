@@ -66,13 +66,13 @@ router.get('/user', async(req, res)=>{
         res.status(400).json({
 
             msg: 'Ocurrio un error',
-            error
+            err
         })
         
     }
 })
 
-//delet
+//delete
 router.delete('/user/:id', async(req, res)=>{
     const _id= req.params.id;
     try {
@@ -89,7 +89,7 @@ router.delete('/user/:id', async(req, res)=>{
         res.status(400).json({
 
             msg: 'Ocurrio un error',
-            error
+            err
         })
     }
 });

@@ -11,21 +11,24 @@ import Home from '../views/home/Home.vue'
 import PerfilView from '../views/home/PerfilView.vue'
 import AddBook from '../views/home/AddBook.vue'
 import LytSPA from '../layouts/LytSPA.vue'
+import NavBar from '../layouts/shared/NavBar.vue'
+import About from '../views/About.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/login',
+    path: '/about',
     component: LytAuth,
     children:[
       {
         name: 'login',
-        path: '',
+        path: '/login',
         components:{
           allLog: Login
         }        
-      },{
+      },
+      {
         name: 'ForgotPassword',
         path: '/forgot-password',
         components:{
@@ -51,18 +54,24 @@ const routes = [
         path: '/sign-up',
         components:{
           allLog: SignUp
+        },
+      },
+      {
+        name: 'about', 
+        path: '',
+        components:{
+          allLog: About
         }
       }
     ]
   },
+  
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/NavBar',
+    name: 'barra-perfil',
+    component: NavBar
   },
+  
   {
     path: '/',
     //name: 'LytSPA',
@@ -79,7 +88,6 @@ const routes = [
         components:{
           allPages: Home
         }    
-
       },
       {
         name: 'PerfilView',
