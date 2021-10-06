@@ -37,6 +37,9 @@ router.get('/book', async(req, res)=>{
     }
 });
 
+//get obtener libros por usuario
+// router.get()
+
 //delete book
 router.delete('/book/:id', async(req, res)=>{
     const _id = req.params.id;
