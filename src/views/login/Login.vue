@@ -1,5 +1,5 @@
 <template>
-  <v-card class="elevation-3 __b-20">
+  <v-card class="elevation-3 __b-20" >
     <v-card-text>
       <v-container fluid>
         <v-row align="center" justify="center">
@@ -9,8 +9,8 @@
             </h3>
             <div class="mt-2">
               <v-btn class="red white--text" >
-                <v-icon small >fab fa-google-plus-g</v-icon>
-                Iniciar con Google
+                <v-icon small >mdi-google-plus</v-icon>
+                  Iniciar con Google
               </v-btn>              
             </div> 
             <div class="mt-2">

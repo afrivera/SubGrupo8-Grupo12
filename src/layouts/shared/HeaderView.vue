@@ -11,7 +11,7 @@
                 </v-tab>
                 <v-spacer></v-spacer>
                 <v-tab>Buscar  <v-icon small>fas fa-search</v-icon></v-tab>  
-                <v-btn @click="signOff">salir <v-icon></v-icon></v-btn>   
+                <v-tab><v-btn @click="signOff" text>salir <v-icon>mdi-logout</v-icon></v-btn>   </v-tab>
             </v-tabs>
         </template>   
     </v-app-bar>
