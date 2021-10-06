@@ -55,10 +55,11 @@
   
 
 <script>
+import {mapState} from 'vuex'
   
 
   export default {
-    name: 'Home',
+    name: 'MyBook',
 
     components: {           
     },
@@ -66,15 +67,25 @@
       show: false,
       books:[]
     }),
+    computed:{
+      ...mapState(['token', 'userDB'])
+    },
     created(){
       this.bookList()
 
     },
     methods:{
       bookList(){
-        this.axios.get('/book')
+        // let config = {
+        //   header: {
+        //     token : this.token
+        //   }
+        // }
+        const {_id} = this.userDB.data
+        console.log(_id);
+
+        this.axios.get(`/book/${_id}`)
           .then(res=>{
-            console.log(res.data);
             this.books = res.data; 
           })
           .catch(e=>{

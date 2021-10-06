@@ -74,7 +74,7 @@
       bookList(){
         this.axios.get('/book')
           .then(res=>{
-            console.log(res.data);
+            // console.log(res.data);
             this.books = res.data; 
           })
           .catch(e=>{

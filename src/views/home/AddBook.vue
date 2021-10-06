@@ -61,7 +61,7 @@ import {mapState} from 'vuex'
 export default {
     name: 'AddBook',
     computed:{
-        ...mapState(['token'])
+        ...mapState(['token', 'userDB'])
     },
     data: () => ({
       valid: true,
@@ -73,6 +73,9 @@ export default {
       }
       
     }),
+    created(){
+      console.log(this.userDB);
+    },
 
     methods: {
       reset () {

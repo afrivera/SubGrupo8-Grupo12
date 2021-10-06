@@ -7,7 +7,7 @@
         <!-- <UserLogged/> -->
         <template v-slot:extension>
             <v-tabs model="optionSelected align-with-title">
-                <v-tab v-for="option in options" :key="option.title" v-text="option.title" :to="option.route">
+                <v-tab v-for="(option, index) in options" :key="index" v-text="option.title" :to="option.route">
                 </v-tab>
                 <v-spacer></v-spacer>
                 <v-tab>Buscar  <v-icon small>fas fa-search</v-icon></v-tab>  
@@ -30,19 +30,24 @@ export default {
             options:[
                 {
                     icon: 'mdi-account',
-                    title: 'Usuarios',
+                    title: 'Inicio',
                     route: '/home'
-                },
-                {
-                    icon: 'user-tag',
-                    title: 'perfiles',
-                    route: 'perfil'
                 },
                 {
                     icon: 'user-tag',
                     title: 'Agregar Libro',
                     route: 'add-book'
-                }
+                },
+                {
+                    icon: 'user-tag',
+                    title: 'Mis libros',
+                    route: 'my-book'
+                },
+                {
+                    icon: 'user-tag',
+                    title: 'Mi Perfil',
+                    route: 'perfil'
+                },
             ],
         }
     },/* ,
