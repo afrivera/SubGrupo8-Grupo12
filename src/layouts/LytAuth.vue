@@ -3,9 +3,10 @@
         <v-app-bar app class="black ">
             <v-row >
                 <v-img  max-width="200" src="../assets/LogoNoFondo800px.png" alt="BookXchange"></v-img>
-            </v-row>             
-            <v-tabs dark centered class=" ml-n9" color="indigo" >
-                <v-tab color="text--indigo" v-for="link in links" :key="link" v-text="link.title" :to="link.route">
+            </v-row>  
+            <v-tabs dark centered class="ml-n9" color="indigo" >
+                <v-tab color="text--indigo" v-for="(link, index) in links" :key="index" v-text="link.title" :to="link.route">
+
                     {{ link }}
                 </v-tab>
             </v-tabs>

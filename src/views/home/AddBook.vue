@@ -137,7 +137,7 @@ import axios from 'axios'
 export default {
     name: 'AddBook',
     computed:{
-        ...mapState(['token'])
+        ...mapState(['token', 'userDB'])
     },
     data: () => ({
       valid: true,
@@ -152,6 +152,9 @@ export default {
       books:[]
       
     }),
+    created(){
+      console.log(this.userDB);
+    },
 
    /*  mounted() {
       console.log("Hola mundo desde mounted");
