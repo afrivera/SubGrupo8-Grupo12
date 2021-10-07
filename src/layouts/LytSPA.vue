@@ -7,8 +7,7 @@
                 <router-view name="allPages"></router-view>
             </v-main>
 
-            <FooterView/>        
-
+            <FooterView/>
         </v-container>
     </v-app>
   

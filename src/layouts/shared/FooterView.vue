@@ -1,15 +1,16 @@
 <template>
-  <v-footer dark padless  >
-    <v-row class="blue darken-3 white--text text-center">
+  <v-footer app dark padless class="mt-10" >
+    <v-row class="black white--text text-center">
       <v-card-text>
         <v-btn
           v-for="icon in icons"
           :key="icon"
           class="mx-4 white--text"
           icon
-        >
+          :href="icon.url" :target="icon.target"
+        >          
           <v-icon size="30px">
-            {{ icon }}
+            {{ icon.name }}
           </v-icon>
         </v-btn>
       </v-card-text>
@@ -27,22 +28,42 @@
 export default {
     data: () => ({
       icons: [
-        'mdi-google-plus',
-        'mdi-twitter',
-        'mdi-linkedin',
-        'mdi-instagram',
-      ],
+        {
+          name:'mdi-google-plus',
+          url: "https://sites.google.com/view/booksxchange/inicio",
+          target: '_blank'
+        },
+        {
+          name: 'fab fa-github',
+          url: "https://github.com/afrivera/SubGrupo1-Grupo59",
+          target: '_blank'        
+        },
+        {
+          name: 'mdi-linkedin',
+          url: "https://sites.google.com/view/booksxchange/inicio",
+          target: '_blank'
+        },
+        
+        {
+          name: 'mdi-instagram',
+          url: "https://sites.google.com/view/booksxchange/inicio",
+          target: '_blank'
+        }
+      ],      
     }),
   }
 </script>
 
 <style scoped>
+    a:link{
+      text-decoration: none;
+    }
     footer {
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100vw;
         height: 50px;
-       /*  background-color: #8c191d !important; */
+        background-color: #8c191d !important;
     }
 </style>
