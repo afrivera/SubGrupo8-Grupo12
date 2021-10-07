@@ -5,8 +5,7 @@
            
             <router-view name="allPages"></router-view>           
 
-            <FooterView/>        
-
+            <FooterView/>
         </v-container>
     </v-app>
   

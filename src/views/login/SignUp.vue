@@ -1,55 +1,64 @@
 <template >
-  <v-card class="elevation-6 __b-20" >
-          <v-card-text>
-            <v-container fluid>
-              <v-row>
-                <v-col cols="12" class="text-center">
-                  <h3 class="headline">
-                    BOOKXCHANGE
-                  </h3>
-                  <h4 class="subtitle-1 mb-3">
-                    Registro
-                  </h4>
-                </v-col>
-              </v-row>
-              <v-row align="center" justify="center">
-                <v-col cols="6" class="align-center">
-                  <v-form @submit.prevent="signup()">
-                    <v-text-field v-model="form.name" label="Name" type="text" outlined dense />
-                    <v-text-field v-model="form.email" label="Email" type="email" outlined dense />
-                    <v-text-field
-                      id="password"
-                      v-model="form.password"
-                      label="Password"
-                      outlined
-                      dense
-                      :append-icon="visibility ? 'mdi-eye-off' : 'mdi-eye'"
-                      :type="visibility ? 'text' : 'password'"
-                      @click:append="() => (visibility = !visibility)"
-                    />
-                    <div class="d-flex">
-                      <v-btn text color="primary" class="text-none px-2 __btn-login-text" @click="goToLogin()">
-                        Iniciar
-                      </v-btn>
-                      <v-spacer />
-                      <v-btn color="primary" class="text-none px-2" type="submit">
-                        Registrarse
-                      </v-btn>
-                    </div>
-                    
-                    
-                  </v-form>
-                  
-                </v-col>
-                <v-col cols="6">
-                  <v-container>
-                    <v-img src="@/assets/logo.jpeg" content-class="" alt="Logo" position="center center" />
-                  </v-container>
-                </v-col>
-              </v-row>
+
+  <v-card class="elevation-6 __b-20">
+    <v-card-text>
+      <v-container fluid>
+        <v-row>
+          <v-col cols="12" class="text-center" color="primary">
+            <h1 class="headline">
+              Registro
+            </h1>              
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col cols="12" class="text-center">            
+            <h2>
+              <v-btn color="primary" icon :to="{name:'login'}">
+                <v-icon>mdi-arrow-left-thick</v-icon>
+              </v-btn>
+              Atrás
+            </h2>        
+          </v-col>
+        </v-row>
+        
+        <v-row align="center" justify="center">
+          <v-col cols="6" class="align-center">
+            <v-form @submit.prevent="signup()">
+              <v-text-field v-model="form.name" label="Name" type="text" outlined dense />
+              <v-text-field v-model="form.email" label="Email" type="email" outlined dense />
+              <v-text-field
+                id="password"
+                v-model="form.password"
+                label="Password"
+                outlined
+                dense
+                :append-icon="visibility ? 'mdi-eye-off' : 'mdi-eye'"
+                :type="visibility ? 'text' : 'password'"
+                @click:append="() => (visibility = !visibility)"
+              />
+              <div class="d-flex">
+                <v-btn text color="primary" class="text-none px-2 __btn-login-text" @click="goToLogin()">
+                  Registrarse
+                </v-btn>
+                <v-spacer />
+                <v-btn color="primary" class="text-none px-2" type="submit">
+                  Cancelar
+                </v-btn>
+              </div>              
+            </v-form>            
+          </v-col>
+          
+          <v-col cols="6">
+            <v-container>
+              <v-img src="@/assets/logo.jpeg" content-class="" alt="Logo" position="center center" />
+
             </v-container>
-          </v-card-text>
-        </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-card-text>
+  </v-card>
   
 </template>
 

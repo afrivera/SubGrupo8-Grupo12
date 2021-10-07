@@ -44,8 +44,7 @@
                     <v-col>
                       <v-btn color="secondary" class="text-none px-2 __btn-login-text" dense :to="{name:'ForgotPassword'}">Olvide mi Contraseña</v-btn>
                     </v-col>
-                  </v-row>
-                  
+                  </v-row>                  
                   
                 </div>
                 <div class="d-flex mt-5">
