@@ -1,5 +1,5 @@
 <template>
-    <v-app-bar app dark class="blue darken-3 white--text ">         
+    <v-app-bar app dark class="black white--text ">         
         <v-row >
             <v-img  max-width="200" contain src="../../assets/LogoNoFondo800px.png" alt="BookXchange"></v-img>
         </v-row> 

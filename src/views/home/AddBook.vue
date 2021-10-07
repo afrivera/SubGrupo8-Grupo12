@@ -1,35 +1,85 @@
 <template>
-  <v-container fluid >
-      <v-row >
-        <v-col >
-          <v-form
+  <v-container fluid>
+
+    <v-row align-content="center" justify="center">
+      <v-col>
+        <h1>Ingresar datos del libro</h1>
+        <v-form
+          ref="form"
+          v-model="valid"
+          @submit.prevent="addBook()"
+          >
+          <v-text-field
+            v-model="form.title"
+            :counter="10"
+            
+            label="titulo del Libro"
+            required
+          ></v-text-field>
+
+          <v-text-field
+            v-model="form.isbn"
+            label="ISBN"
+            required
+          ></v-text-field>
+          <v-text-field
+            v-model="form.author"
+            label="Autor"
+            required
+          ></v-text-field>
+          <v-text-field
+            v-model="form.imgStatus"
+            label="Cargar Imagenes"
+            required
+          ></v-text-field>
+
+          <v-btn
+            :disabled="!valid"
+            color="success"
+            class="mr-4"
+            type="submit"
+          >
+            Añadir libro
+          </v-btn>
+
+          <v-btn
+            color="error"
+            class="mr-4"
+            @click="reset"
+          >
+            Borrar formulario
+          </v-btn>
+
+          <!-- <v-btn
+            color="warning"
+            @click="resetValidation"
+          >
+            Reset Validation
+          </v-btn> -->
+        </v-form>
+      </v-col>
+    </v-row>
+
+    <v-row >
+      <v-col >
+        <v-form
           ref="form"
           v-model="valid"
           @submit.prevent="searchBook()"
           >
+            <h1>Buscar datos del libro</h1>
             <v-text-field
-              v-model="form.title"
-              placeholder="Título"
+              v-model="form.search"
+              placeholder="Título, autor"
               :counter="50"        
               label="Buscar libro"
               required
-            ><v-icon slot="append">mdi-magnify</v-icon> 
+            >
+              <v-icon slot="append">mdi-magnify</v-icon> 
             </v-text-field>   
 
-            <!-- <v-btn
-              :disabled="!valid"
-              color="success"
-              class="mr-4"
-              type="submit"
-            >
-              Añadir libro
-            </v-btn> -->
-            <v-btn type="submit" color="success" class="mr-5">
+            <v-btn type="submit" color="secondary" class="mr-5">
               Buscar Libro
-            </v-btn>
-
-            <v-btn color="error" @click="reset" >
-              Limpiar formulario
             </v-btn>
         </v-form>
       </v-col>
@@ -50,7 +100,7 @@
               Autors: {{item.volumeInfo.authors}}
           </v-card-subtitle>
 
-          <v-btn color="primary" @click="addBook()">
+          <v-btn color="success" @click="addBook()">
             Añadir libro
           </v-btn>
 
@@ -96,15 +146,16 @@ export default {
           title:'',
           isbn:'',
           author:'',
-          imgStatus:''
+          imgStatus:'',
+          search:''
       },
       books:[]
       
     }),
 
-    mounted() {
+   /*  mounted() {
       console.log("Hola mundo desde mounted");
-    },
+    }, */
 
     methods: {
       reset () {
@@ -128,8 +179,9 @@ export default {
           console.log(e.response);
         })
       },
+      
       searchBook(){
-        const search = this.form.title;
+        const search = this.form.search;
         axios.get('https://www.googleapis.com/books/v1/volumes?q='+ search +'+inauthor')
         //.then (res => res.json())
         .then (res => {

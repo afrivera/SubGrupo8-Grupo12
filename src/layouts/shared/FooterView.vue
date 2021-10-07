@@ -1,19 +1,17 @@
 <template>
-  <v-footer dark padless class="mt-10" >
-    <v-row class="blue darken-3 white--text text-center">
+  <v-footer app dark padless class="mt-10" >
+    <v-row class="black white--text text-center">
       <v-card-text>
         <v-btn
           v-for="icon in icons"
           :key="icon"
           class="mx-4 white--text"
           icon
+          :href="icon.url" :target="icon.target"
         >          
-          <a :href="icon.url" :target="icon.target">
-            <v-icon size="30px">
-              {{ icon.name }}
-            </v-icon>
-          </a>
-          
+          <v-icon size="30px">
+            {{ icon.name }}
+          </v-icon>
         </v-btn>
       </v-card-text>
 
@@ -42,13 +40,13 @@ export default {
         },
         {
           name: 'mdi-linkedin',
-          url: "",
+          url: "https://sites.google.com/view/booksxchange/inicio",
           target: '_blank'
         },
         
         {
           name: 'mdi-instagram',
-          url: "",
+          url: "https://sites.google.com/view/booksxchange/inicio",
           target: '_blank'
         }
       ],      

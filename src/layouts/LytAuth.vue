@@ -1,11 +1,11 @@
 <template>    
     <v-app >                
-        <v-app-bar app class="blue darken-3" >
+        <v-app-bar app class="black ">
             <v-row >
                 <v-img  max-width="200" src="../assets/LogoNoFondo800px.png" alt="BookXchange"></v-img>
             </v-row>             
-            <v-tabs centered class="ml-n9" color="white darken-1" >
-                <v-tab v-for="link in links" :key="link" v-text="link.title" :to="link.route">
+            <v-tabs dark centered class=" ml-n9" color="indigo" >
+                <v-tab color="text--indigo" v-for="link in links" :key="link" v-text="link.title" :to="link.route">
                     {{ link }}
                 </v-tab>
             </v-tabs>
