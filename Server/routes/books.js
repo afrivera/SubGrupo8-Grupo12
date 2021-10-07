@@ -37,8 +37,25 @@ router.get('/book', async(req, res)=>{
     }
 });
 
+//get obtener libros por usuario
+router.get('/book/:userId',/* verificarAuth,  */async(req, res)=>{
+
+    const userId = req.params.userId
+
+    try {
+        const bookDB = await Books.find({userId});
+        res.json(bookDB)
+        
+    } catch (error) {
+        res.status(500).json({
+            msg: 'Ocurrio un error',
+            error
+        })          
+    }
+});
+
 //delete book
-router.delete('/book/:id', async(req, res)=>{
+router.delete('/book/:id', verificarAuth, async(req, res)=>{
     const _id = req.params.id;
     try {
         const bookDB = await Books.findByIdAndDelete({_id});
@@ -58,7 +75,7 @@ router.delete('/book/:id', async(req, res)=>{
 });
 
 //put actualizar libro
-router.put('/book/:id', async(req, res) =>{
+router.put('/book/:id', verificarAuth, async(req, res) =>{
     const _id = req.params.id;
     const body = req.body
 

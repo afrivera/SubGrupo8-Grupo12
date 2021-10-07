@@ -1,4 +1,5 @@
 <template >
+
   <v-card class="elevation-6 __b-20">
     <v-card-text>
       <v-container fluid>
@@ -51,6 +52,7 @@
           <v-col cols="6">
             <v-container>
               <v-img src="@/assets/logo.jpeg" content-class="" alt="Logo" position="center center" />
+
             </v-container>
           </v-col>
         </v-row>

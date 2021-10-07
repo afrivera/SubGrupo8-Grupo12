@@ -10,6 +10,7 @@ import index from '../store/index'
 import Home from '../views/home/Home.vue'
 import PerfilView from '../views/home/PerfilView.vue'
 import AddBook from '../views/home/AddBook.vue'
+import MyBook from '../views/home/MyBook.vue'
 import LytSPA from '../layouts/LytSPA.vue'
 import NavBar from '../layouts/shared/NavBar.vue'
 import About from '../views/About.vue'
@@ -103,6 +104,14 @@ const routes = [
         component:() => import(/* webpackChunkName: "AddBook" */ '../views/home/AddBook.vue'),
         components:{
           allPages: AddBook
+        }  
+      },
+      {
+        name: 'MyBook',
+        path: '/my-book',
+        component:() => import(/* webpackChunkName: "MyBook" */ '../views/home/MyBook.vue'),
+        components:{
+          allPages: MyBook
         }   
       }
     ]
