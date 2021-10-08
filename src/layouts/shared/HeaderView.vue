@@ -6,7 +6,7 @@
         
         <!-- <UserLogged/> -->
         <template v-slot:extension>
-            <v-tabs model="optionSelected align-with-title">
+            <v-tabs color="indigo" model="optionSelected align-with-title">
                 <v-tab v-for="(option, index) in options" :key="index" v-text="option.title" :to="option.route">
                 </v-tab>
                 <v-spacer></v-spacer>

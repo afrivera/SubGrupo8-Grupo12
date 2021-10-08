@@ -1,8 +1,7 @@
 <template>
   <v-container fluid>
-
     <v-row align-content="center" justify="center">
-      <v-col>
+      <v-col width="">
         <h1>Ingresar datos del libro</h1>
         <v-form
           ref="form"
@@ -11,9 +10,8 @@
           >
           <v-text-field
             v-model="form.title"
-            :counter="10"
-            
-            label="titulo del Libro"
+            :counter="10"            
+            label="Titulo"
             required
           ></v-text-field>
 
@@ -26,12 +24,13 @@
             v-model="form.author"
             label="Autor"
             required
-          ></v-text-field>
-          <v-text-field
-            v-model="form.imgStatus"
-            label="Cargar Imagenes"
-            required
-          ></v-text-field>
+          ></v-text-field>          
+          <v-file-input
+            v-model="form.img"
+            show-size
+            label="Cargar Imagen" 
+            truncate-length="15"
+          ></v-file-input>
 
           <v-btn
             :disabled="!valid"
@@ -73,7 +72,7 @@
               placeholder="Título, autor"
               :counter="50"        
               label="Buscar libro"
-              required
+              
             >
               <v-icon slot="append">mdi-magnify</v-icon> 
             </v-text-field>   
@@ -89,7 +88,7 @@
       <v-col sm="5" class="pa-3" max-width="350" v-for="item in books" :key="item">
         <v-card class="pa-2" >
           
-          <v-img :src="item.volumeInfo.imageLinks.thumbnail" max-height="300" contain>                
+          <v-img src="item.volumeInfo.imageLinks.thumbnail" max-height="300" contain>                
           </v-img>
 
           <v-card-title>
@@ -139,17 +138,19 @@ export default {
     computed:{
         ...mapState(['token', 'userDB'])
     },
-    data: () => ({
+    data: () => ({     
       valid: true,
       show: false,
       form:{
           title:'',
           isbn:'',
           author:'',
-          imgStatus:'',
-          search:''
+          img:'',
+          search:'',
       },
-      books:[]
+      books:[],
+    
+      selectedFile: null
       
     }),
     created(){
@@ -185,7 +186,7 @@ export default {
       
       searchBook(){
         const search = this.form.search;
-        axios.get('https://www.googleapis.com/books/v1/volumes?q='+ search +'+inauthor')
+        axios.get('https://www.googleapis.com/books/v1/volumes?q='+ search +'+title')
         //.then (res => res.json())
         .then (res => {
           console.log(search);
@@ -193,8 +194,7 @@ export default {
           this.books = res.data.items;
         })
         .catch(e=> console.log(e))        
-      }
-      
+      },      
     },
 }
 </script>

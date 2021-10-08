@@ -5,8 +5,7 @@
                 <v-img  max-width="200" src="../assets/LogoNoFondo800px.png" alt="BookXchange"></v-img>
             </v-row>  
             <v-tabs dark centered class="ml-n9" color="indigo" >
-                <v-tab color="text--indigo" v-for="(link, index) in links" :key="index" v-text="link.title" :to="link.route">
-
+                <v-tab v-for="(link, index) in links" :key="index" v-text="link.title" :to="link.route">
                     {{ link }}
                 </v-tab>
             </v-tabs>
