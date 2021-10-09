@@ -8,9 +8,10 @@
             max-width="344"        
           >
             <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              :src="book.imgStatus"
               height="200px"
-            > {{book.imgStatus}}</v-img>
+              contain
+            > </v-img>
 
             <v-card-title class="headline">
               {{book.title}}
