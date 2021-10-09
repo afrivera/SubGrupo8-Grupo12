@@ -1,5 +1,4 @@
 <template >
-
   <v-card class="elevation-6 __b-20">
     <v-card-text>
       <v-container fluid>
@@ -51,13 +50,15 @@
             </v-container>
           </v-col>
         </v-row>
-        <v-row>
-          <v-alert 
-            icon="$mdiAccount"
-            dismissible
-            :type="mensaje.color"
-            v-if="mensaje.texto !=''">{{mensaje.texto}}
-          </v-alert>           
+
+        <v-row justify="center">
+          <v-col cols="12" >
+            <v-alert             
+              dismissible
+              :type="mensaje.color"
+              v-if="mensaje.texto !=''">{{mensaje.texto}}
+            </v-alert>
+          </v-col>
         </v-row>
       </v-container>
     </v-card-text>
@@ -113,3 +114,4 @@ export default {
   font-size: 30px;
 }
 </style>
+

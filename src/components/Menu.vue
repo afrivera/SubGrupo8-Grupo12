@@ -1,8 +1,6 @@
 <template>
-  <v-container
-    fluid
-  >
-    <v-row justify="center">
+  <v-container fluid >
+    <v-row>
       <v-menu
         bottom
         min-width="200px"
@@ -16,7 +14,7 @@
             v-on="on"
           >
             <v-avatar
-              color="brown"
+              color="indigo"
               size="48"
             >
               <span class="white--text text-h5">{{ user.initials }}</span>

@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row align-content="center" justify="center">
-      <v-col width="">
+      <v-col >
         <h1>Ingresar datos del libro</h1>
         <v-form
           ref="form"
@@ -24,13 +24,21 @@
             v-model="form.author"
             label="Autor"
             required
-          ></v-text-field>          
-          <v-file-input
+          ></v-text-field>
+
+          <!-- <v-file-input
+            type="file"
             v-model="form.img"
             show-size
             label="Cargar Imagen" 
             truncate-length="15"
-          ></v-file-input>
+          ></v-file-input> -->
+
+          <div class="section">
+            <div class="container">
+              <simple-upload></simple-upload>
+            </div>
+          </div>
 
           <v-btn
             :disabled="!valid"
@@ -132,12 +140,14 @@
 <script>
 import {mapState} from 'vuex'
 import axios from 'axios'
+import SimpleUpload from '../../components/SimpleUpload.vue';
 
 export default {
     name: 'AddBook',
     computed:{
         ...mapState(['token', 'userDB'])
     },
+    components: {SimpleUpload},
     data: () => ({     
       valid: true,
       show: false,
@@ -149,8 +159,6 @@ export default {
           search:'',
       },
       books:[],
-    
-      selectedFile: null
       
     }),
     created(){

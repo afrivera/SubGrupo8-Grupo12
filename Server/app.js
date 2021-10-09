@@ -32,6 +32,11 @@ app.use(express.urlencoded({ extended: true }));
 /* app.get('/', function(req,res){
     res.send('Hola Mundo');
 }); */
+app.post('/upload', (req, res) => {
+    res.json({cool: 'yeah'})
+});
+
+
 app.use('/api', require('./routes/user'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api', require('./routes/books'));
