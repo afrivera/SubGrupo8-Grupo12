@@ -86,10 +86,12 @@
     </v-row>
 
     <v-row no-gutters>
-      <v-col sm="5" class="pa-3" max-width="350" v-for="({volumeInfo:{imageLinks='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fes%2Fvector%2Fun-libro-desconocido-gm905531592-249683697&psig=AOvVaw0wqKT70uRpoCpWmUKyx7lF&ust=1633817882370000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMDziYjsu_MCFQAAAAAdAAAAABAD', title, authors, description} }, index) in books" :key="index">
+      <v-col sm="5" class="pa-3" max-width="350" v-for="({volumeInfo:{imageLinks='sin valor', title, authors, description, industryIdentifiers} }, index) in books" :key="index">
         <v-card class="pa-2" >
           
-          <v-img :src="imageLinks.thumbnail" max-height="300" contain>                
+          <v-img v-if="imageLinks.thumbnail" :src="imageLinks.thumbnail" max-height="200" contain>                
+          </v-img>
+          <v-img v-else src="http://www.culturamas.es/wp-content/uploads/2015/11/libro.jpg" max-height="200" contain>                
           </v-img>
 
           <v-card-title>
@@ -97,7 +99,11 @@
           </v-card-title>
 
           <v-card-subtitle>
-              Autors: {{authors}}
+              Autors: {{authors[0]}} 
+          </v-card-subtitle >
+          
+          <v-card-subtitle >
+            ISBN: {{industryIdentifiers[0].identifier}} 
           </v-card-subtitle>
 
           <v-btn color="success" @click="addBook()">
