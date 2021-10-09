@@ -82,7 +82,7 @@ import {mapState} from 'vuex'
         //   }
         // }
         const {_id} = this.userDB.data
-        console.log(_id);
+        // console.log(_id);
 
         this.axios.get(`/book/${_id}`)
           .then(res=>{

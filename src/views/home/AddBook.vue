@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
 
-    <v-row align-content="center" justify="center">
+    <v-row align-content="center" justify="center" no-gutters>
       <v-col>
         <h1>Ingresar datos del libro</h1>
         <v-form
@@ -60,7 +60,7 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row no-gutters>
       <v-col >
         <v-form
           ref="form"
@@ -86,18 +86,18 @@
     </v-row>
 
     <v-row no-gutters>
-      <v-col sm="5" class="pa-3" max-width="350" v-for="item in books" :key="item">
+      <v-col sm="5" class="pa-3" max-width="350" v-for="({volumeInfo:{imageLinks='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fes%2Fvector%2Fun-libro-desconocido-gm905531592-249683697&psig=AOvVaw0wqKT70uRpoCpWmUKyx7lF&ust=1633817882370000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMDziYjsu_MCFQAAAAAdAAAAABAD', title, authors, description} }, index) in books" :key="index">
         <v-card class="pa-2" >
           
-          <v-img :src="item.volumeInfo.imageLinks.thumbnail" max-height="300" contain>                
+          <v-img :src="imageLinks.thumbnail" max-height="300" contain>                
           </v-img>
 
           <v-card-title>
-            {{item.volumeInfo.title}}
+            {{title}}
           </v-card-title>
 
           <v-card-subtitle>
-              Autors: {{item.volumeInfo.authors}}
+              Autors: {{authors}}
           </v-card-subtitle>
 
           <v-btn color="success" @click="addBook()">
@@ -119,7 +119,7 @@
               <v-divider></v-divider>
 
               <v-card-text class="py-0 ma-2">
-                {{item.volumeInfo.description}}
+                {{description}}
               </v-card-text>
             </div>
           </v-expand-transition>
@@ -153,7 +153,7 @@ export default {
       
     }),
     created(){
-      console.log(this.userDB);
+      // console.log(this.userDB);
     },
 
    /*  mounted() {
@@ -185,12 +185,13 @@ export default {
       
       searchBook(){
         const search = this.form.search;
-        axios.get('https://www.googleapis.com/books/v1/volumes?q='+ search +'+inauthor')
+        axios.get('https://www.googleapis.com/books/v1/volumes?q='+ search +'+title')
         //.then (res => res.json())
         .then (res => {
           console.log(search);
-          console.log(res.data.items);
-          this.books = res.data.items;
+          const {items} = res.data;
+          console.log(items);
+          this.books = items;
         })
         .catch(e=> console.log(e))        
       }

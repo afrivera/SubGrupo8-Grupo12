@@ -49,7 +49,7 @@ export default {
         this.axios.get(`/user/${_id}`)
           .then(res=>{
             this.userData = res.data;
-            console.log(this.userData);
+            // console.log(this.userData);
           })
           .catch(e=>{
             console.log(e.response);

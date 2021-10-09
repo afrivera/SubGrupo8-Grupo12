@@ -26,7 +26,7 @@ router.post('/new-book',verificarAuth, async(req, res)=>{
 //get obtener  todos los libros
 router.get('/book', async(req, res)=>{
     try {
-        const bookDB = await Books.find();
+        const bookDB = await Books.find({},{createAt:0}).sort({'createAt':1});
         res.json(bookDB)
         
     } catch (error) {
