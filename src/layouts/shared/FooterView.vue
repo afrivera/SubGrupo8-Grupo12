@@ -35,18 +35,18 @@ export default {
         },
         {
           name: 'fab fa-github',
-          url: "https://github.com/afrivera/SubGrupo1-Grupo59",
+          url: "",
           target: '_blank'        
         },
         {
           name: 'mdi-linkedin',
-          url: "https://sites.google.com/view/booksxchange/inicio",
+          url: "",
           target: '_blank'
         },
         
         {
           name: 'mdi-instagram',
-          url: "https://sites.google.com/view/booksxchange/inicio",
+          url: "",
           target: '_blank'
         }
       ],      

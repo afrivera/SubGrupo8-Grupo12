@@ -5,20 +5,15 @@
       <v-container fluid>
         <v-row>
           <v-col cols="12" class="text-center" color="primary">
-            <h1 class="headline">
+            <h1 class="headline" >
               Registro
-            </h1>              
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col cols="12" class="text-center">            
-            <h2>
+            </h1>
+            <h3 >
               <v-btn color="primary" icon :to="{name:'login'}">
                 <v-icon>mdi-arrow-left-thick</v-icon>
               </v-btn>
               Atrás
-            </h2>        
+            </h3>             
           </v-col>
         </v-row>
         
@@ -38,15 +33,15 @@
                 @click:append="() => (visibility = !visibility)"
               />
               <div class="d-flex">
-                <v-btn text color="primary" class="text-none px-2 __btn-login-text" @click="goToLogin()">
+                <v-btn color="primary" type="submit" class="text-none px-2 __btn-login-text">
                   Registrarse
                 </v-btn>
                 <v-spacer />
-                <v-btn color="primary" class="text-none px-2" type="submit">
+                <v-btn color="secondary" class="text-none px-2" :to="{name:'login'}">
                   Cancelar
                 </v-btn>
               </div>              
-            </v-form>            
+            </v-form>
           </v-col>
           
           <v-col cols="6">
@@ -55,6 +50,14 @@
 
             </v-container>
           </v-col>
+        </v-row>
+        <v-row>
+          <v-alert 
+            icon="$mdiAccount"
+            dismissible
+            :type="mensaje.color"
+            v-if="mensaje.texto !=''">{{mensaje.texto}}
+          </v-alert>           
         </v-row>
       </v-container>
     </v-card-text>
@@ -71,7 +74,8 @@ export default {
         name: '',
         email: '',
         password: ''
-      }
+      },
+      mensaje: {color: '', texto: ''},
     }
   },
   methods: {
@@ -87,15 +91,25 @@ export default {
       this.axios.post('/new-user', this.form)
         .then(res=>{
           console.log(res.data);
+          this.mensaje.color="success"
+          this.mensaje.texto="Usuario Creado con Exito"
         })
         .catch(e=>{
           console.log(e.response);
+          this.mensaje.color="error"
+          this.mensaje.texto= e.response.data.msg
         })
 
     },
     goToLogin() {
       this.$router.push({ name: 'login' })
-    }
+    },
   }
 }
 </script>
+
+<style scoped>
+.headline {
+  font-size: 30px;
+}
+</style>

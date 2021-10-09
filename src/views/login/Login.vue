@@ -1,5 +1,5 @@
 <template>
-  <v-card class="elevation-3 __b-20" >
+  <v-card dark class="elevation-3 __b-20" >
     <v-card-text>
       <v-container fluid>
         <v-row align="center" justify="center">

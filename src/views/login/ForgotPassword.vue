@@ -11,7 +11,7 @@
             </v-btn>
               Atrás
             </h3>        
-            </v-col>
+          </v-col>
         </v-row>
         <v-row align="center">
           <v-col cols="12" class="align-center">
