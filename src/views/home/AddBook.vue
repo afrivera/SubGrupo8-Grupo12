@@ -86,25 +86,24 @@
     </v-row>
 
     <v-row no-gutters>
-      <v-col sm="5" class="pa-3" max-width="350" v-for="({volumeInfo:{imageLinks='sin valor', title, authors, description, industryIdentifiers} }, index) in books" :key="index">
+      <v-col sm="5" class="pa-3" max-width="350" v-for="({imageLinks={thumbnail:'http://www.culturamas.es/wp-content/uploads/2015/11/libro.jpg'}, title, authors=['Desconocido'], description, industryIdentifiers=['Desconocido']} , index) in books" :key="index">
         <v-card class="pa-2" >
           
-          <v-img v-if="imageLinks.thumbnail" :src="imageLinks.thumbnail" max-height="200" contain>                
+          <v-img :src="imageLinks.thumbnail" max-height="200" contain>                
           </v-img>
-          <v-img v-else src="http://www.culturamas.es/wp-content/uploads/2015/11/libro.jpg" max-height="200" contain>                
-          </v-img>
+          
 
           <v-card-title>
             {{title}}
           </v-card-title>
 
-          <v-card-subtitle>
-              Autors: {{authors[0]}} 
+          <v-card-subtitle v-if="authors">
+              Autors: {{authors}} 
           </v-card-subtitle >
           
-          <v-card-subtitle >
-            ISBN: {{industryIdentifiers[0].identifier}} 
-          </v-card-subtitle>
+          <v-card-text >
+            ISBN: {{industryIdentifiers.identifier}} 
+          </v-card-text>
 
           <v-btn color="success" @click="addBook()">
             Añadir libro
@@ -196,8 +195,12 @@ export default {
         .then (res => {
           console.log(search);
           const {items} = res.data;
-          console.log(items);
-          this.books = items;
+          items.forEach(element => {
+            console.log(element.volumeInfo);
+            this.books.push(element.volumeInfo)
+          });
+          // console.log(items);
+          // this.books = items;
         })
         .catch(e=> console.log(e))        
       }
