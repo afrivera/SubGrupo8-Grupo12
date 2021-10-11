@@ -171,14 +171,14 @@ export default {
             token:this.token
           }
         }
-        const response =await this.axios.post('/new-book', this.formulario, config)
-        .then(res=>{
-          console.log(res.data);
-          this.$router.push({ name: 'Home', params:{message: response.message} })
-        })
-        .catch(e=>{
-          console.log(e.response);
-        })
+        await this.axios.post('/new-book', this.formulario, config)
+          .then(res=>{
+            // console.log(res)
+            this.$router.push({ name: 'home', params:{message: res.data.message} })
+          })
+          .catch(e=>{
+            console.log(e.response);
+          })
       },
       
       async searchBook(){

@@ -10,6 +10,7 @@ import index from '../store/index'
 import Home from '../views/home/Home.vue'
 import PerfilView from '../views/home/PerfilView.vue'
 import AddBook from '../views/home/AddBook.vue'
+import EditBook from '../views/home/EditBook.vue'
 import ViewBook from '../views/home/ViewBook.vue'
 import MyBook from '../views/home/MyBook.vue'
 import LytSPA from '../layouts/LytSPA.vue'
@@ -97,7 +98,6 @@ const routes = [
       {
         name: 'AddBook',
         path: '/add-book',
-        component:() => import(/* webpackChunkName: "AddBook" */ '../views/home/AddBook.vue'),
         components:{
           allPages: AddBook
         }  
@@ -105,7 +105,6 @@ const routes = [
       {
         name: 'MyBook',
         path: '/my-book',
-        component:() => import(/* webpackChunkName: "MyBook" */ '../views/home/MyBook.vue'),
         components:{
           allPages: MyBook
         }   
@@ -113,9 +112,15 @@ const routes = [
       {
         name: 'ViewBook',
         path: '/view-book/:id',
-        component:() => import(/* webpackChunkName: "ViewBook" */ '../views/home/ViewBook.vue'),
         components:{
           allPages: ViewBook
+        } 
+      },
+      {
+        name: 'edit-book',
+        path: '/edit-book/:id',
+        components:{
+          allPages: EditBook
         } 
       }
     ]

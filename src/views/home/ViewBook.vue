@@ -10,7 +10,10 @@
                               <v-btn small outlined color="primary" >{{book.bookStatus}}</v-btn>
                           </v-col>
                           <v-col sm="10" class="d-flex justify-end">
-                              <v-btn color="success" text>Editar</v-btn>
+                              <v-btn 
+                                color="success" text
+                                @click="goEdit()"
+                              >Editar</v-btn>
                               <v-btn color="red" text @click="deleteBook()">Borrar</v-btn>
                           </v-col>
                       </v-row>
@@ -48,21 +51,27 @@ export default {
                     token:this.token
                 }
             }
-            const response = await this.axios.delete(`book/${this.$route.params.id}`, config)
+            await this.axios.delete(`book/${this.$route.params.id}`, config)
                 .then(res=>{
-                    console.log(response);
+                    // console.log(response);
                     console.log(res.data);
-                    this.$router.push({ name: 'home' , params:{msg: response.message} })
+                    this.$router.push({ name: 'home' , params:{message: res.data.message} })
                 })
                 .catch(e=> console.log(e)) 
 
+        },
+        goEdit(){
+            this.$router.push({
+                name:'edit-book', 
+                params:{id:this.book._id}
+            })
         }
     
     },
     async created(){
         const response = await this.axios.get(`book/edit/${this.$route.params.id}`)
         this.book = response.data
-        console.log(this.book);
+        // console.log(this.book);
     }
 }
 </script>

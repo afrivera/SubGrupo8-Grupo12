@@ -12,8 +12,8 @@ router.post('/new-book',verificarAuth, async(req, res)=>{
     body.userId = req.user._id
 
     try {
-        const bookDB = await Books.create(body);
-        return res.json(bookDB);
+        await Books.create(body);
+        res.json({message:'Libro Creado Exitosamente'});
 
     } catch (error) {
         res.status(500).json({
@@ -81,7 +81,7 @@ router.delete('/book/:id', verificarAuth, async(req, res)=>{
                 msg: 'No se Encontró el id del libro'
             })
         }
-        res.json(bookDB)
+        res.json({message:'Libro Borrado Exitosamente'})
     } catch (error) {
         res.status(400).json({
 

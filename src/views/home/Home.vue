@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
-      <v-alert border="left" close-text ="Cerrar Alerta" color="green accent 4" dark dismissible
-        v-if="this.$route.params.msg"
+      <v-alert border="left" close-text ="Cerrar Alerta" color="success" dark dismissible
+        v-if="this.$route.params.message"
       >{{this.$route.params.message}}</v-alert>
       <v-row no-gutters>
         <v-col sm="4" class="pa-3" v-for="(book, index) in books" :key="index">
@@ -72,8 +72,8 @@
       show: false,
       books:[]
     }),
-    created(){
-      this.bookList()
+    async created(){
+      await this.bookList()
     },
     methods:{
       bookList(){
@@ -81,7 +81,7 @@
           .then(res=>{
             // console.log(res.data);
             this.books = res.data;
-            console.log(this.books);
+            // console.log(this.books);
           })
           .catch(e=>{
             console.log(e.response);
