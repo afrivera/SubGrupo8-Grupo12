@@ -5,7 +5,8 @@
                   
           <v-card
             class="pa-1"
-            max-width="344"        
+            max-width="344"
+            :to="{name:'ViewBook', params:{id: books[index]._id}}"        
           >
             <v-img
               :src="book.imgStatus"

@@ -53,6 +53,23 @@ router.get('/book/:userId',/* verificarAuth,  */async(req, res)=>{
         })          
     }
 });
+//get obtener libros por Id
+router.get('/book/edit/:id',/* verificarAuth, */  async(req, res)=>{
+
+    const _id = req.params.id
+    // res.json(_id) 
+
+    try {
+        const bookDB = await Books.findOne({_id});
+        res.json(bookDB)
+        
+    } catch (error) {
+        res.status(500).json({
+            msg: 'Ocurrio un error',
+            error
+        })          
+    }
+});
 
 //delete book
 router.delete('/book/:id', verificarAuth, async(req, res)=>{

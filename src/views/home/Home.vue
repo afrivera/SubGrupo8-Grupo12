@@ -5,16 +5,18 @@
                   
           <v-card
             class="pa-1"
-            max-width="344"        
+            max-width="344"
+            :to="{name:'ViewBook', params:{id: books[index]._id}}"        
           >
             <v-img
               :src='book.imgStatus'
               height="200px"
               contain
+              
             ></v-img>
 
             <v-card-title class="headline">
-              {{book.title}}
+              {{book.title.substring(0,25)+ '...'}}
             </v-card-title>
 
             <v-card-subtitle>
@@ -74,8 +76,9 @@
       bookList(){
         this.axios.get('/book')
           .then(res=>{
-            console.log(res.data);
-            this.books = res.data; 
+            // console.log(res.data);
+            this.books = res.data;
+            console.log(this.books);
           })
           .catch(e=>{
             console.log(e.response);

@@ -10,27 +10,27 @@
           @submit.prevent="addBook()"
           >
           <v-text-field
-            v-model="form.title"
-            :counter="10"
-            
-            label="titulo del Libro"
+            v-model="formulario.title"
+            label="titulo del Libro"            
             required
           ></v-text-field>
 
           <v-text-field
-            v-model="form.isbn"
+            v-model="formulario.isbn"
             label="ISBN"
+
             required
           ></v-text-field>
           <v-text-field
-            v-model="form.author"
+            v-model="formulario.author"
             label="Autor"
             required
+
           ></v-text-field>
           <v-text-field
-            v-model="form.imgStatus"
+            v-model="formulario.imgStatus"
             label="Cargar Imagenes"
-            required
+
           ></v-text-field>
 
           <v-btn
@@ -50,12 +50,6 @@
             Borrar formulario
           </v-btn>
 
-          <!-- <v-btn
-            color="warning"
-            @click="resetValidation"
-          >
-            Reset Validation
-          </v-btn> -->
         </v-form>
       </v-col>
     </v-row>
@@ -89,24 +83,24 @@
       <v-col sm="5" class="pa-3" max-width="350" v-for="({imageLinks={thumbnail:'http://www.culturamas.es/wp-content/uploads/2015/11/libro.jpg'}, title, authors=['Desconocido'], description, industryIdentifiers=['Desconocido']} , index) in books" :key="index">
         <v-card class="pa-2" >
           
-          <v-img :src="imageLinks.thumbnail" max-height="200" contain>                
+          <v-img :src="imageLinks.thumbnail" max-height="200" contain>              
           </v-img>
           
 
           <v-card-title>
-            {{title}}
+            {{title.substring(0,40)}}
           </v-card-title>
 
           <v-card-subtitle v-if="authors">
-              Autors: {{authors}} 
+              Autors: {{authors[0]}} 
           </v-card-subtitle >
           
           <v-card-text >
-            ISBN: {{industryIdentifiers.identifier}} 
+            ISBN: {{industryIdentifiers[0].identifier}} 
           </v-card-text>
 
-          <v-btn color="success" @click="addBook()">
-            Añadir libro
+          <v-btn color="success" @click="selectBook(index)">
+            Seleccionar
           </v-btn>
 
           <v-card-actions>
@@ -119,7 +113,7 @@
             </v-btn>
           </v-card-actions>
 
-          <v-expand-transition>
+          <v-expand-transition mode="in-out">
             <div v-show="show">
               <v-divider></v-divider>
 
@@ -148,12 +142,14 @@ export default {
       valid: true,
       show: false,
       form:{
-          title:'',
-          isbn:'',
-          author:'',
-          imgStatus:'',
-          search:''
+        title:'',
+        isbn:'',
+        author:'',
+        imgStatus:'',
+        search:''
+          
       },
+      formulario : {},
       books:[]
       
     }),
@@ -169,16 +165,13 @@ export default {
       reset () {
         this.$refs.form.reset()
       },
-      resetValidation () {
-        this.$refs.form.resetValidation()
-      },
       addBook(){
         let config = {
           headers:{
             token:this.token
           }
         }
-        this.axios.post('/new-book', this.form, config)
+        this.axios.post('/new-book', this.formulario, config)
         .then(res=>{
           console.log(res.data);
             this.$router.push({ name: 'home' })
@@ -188,21 +181,40 @@ export default {
         })
       },
       
-      searchBook(){
+      async searchBook(){
+        this.books=[];
         const search = this.form.search;
-        axios.get('https://www.googleapis.com/books/v1/volumes?q='+ search +'+title')
+        await axios.get('https://www.googleapis.com/books/v1/volumes?q='+ search +'+title')
         //.then (res => res.json())
         .then (res => {
-          console.log(search);
+          // console.log(search);
           const {items} = res.data;
           items.forEach(element => {
-            console.log(element.volumeInfo);
+           /*  const {title, authors,imageLinks='sin contenido',description='sin descripción',industryIdentifiers=['Desconocido']} = element.volumeInfo
+            const {thumbnail='http://www.culturamas.es/wp-content/uploads/2015/11/libro.jpg',} = imageLinks
+            const {identifier='desconocido'} = industryIdentifiers
+            console.table(title, authors, thumbnail,identifier,description); */
+            // console.log(element.volumeInfo);
             this.books.push(element.volumeInfo)
           });
           // console.log(items);
           // this.books = items;
+          
         })
-        .catch(e=> console.log(e))        
+        .catch(e=> console.log(e))    
+          
+      },
+      async selectBook(index){
+        this.formulario = {}
+        const {title, authors,imageLinks='sin contenido',description='sin descripción',industryIdentifiers=['Desconocido'] } = this.books[index];
+        const {identifier} = industryIdentifiers[0]
+        this.formulario.title = title
+        this.formulario.isbn = identifier
+        this.formulario.author = authors[0]
+        this.formulario.imgStatus = imageLinks.thumbnail
+        this.formulario.description = description
+        // this.formulario.push(selecte)
+        // console.log(this.formulario);
       }
       
     },
