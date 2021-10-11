@@ -1,5 +1,8 @@
 <template>
     <v-container fluid>
+      <v-alert border="left" close-text ="Cerrar Alerta" color="green accent 4" dark dismissible
+        v-if="this.$route.params.msg"
+      >{{this.$route.params.message}}</v-alert>
       <v-row no-gutters>
         <v-col sm="4" class="pa-3" v-for="(book, index) in books" :key="index">
                   
@@ -61,7 +64,7 @@
   
 
   export default {
-    name: 'Home',
+    name: 'home',
 
     components: {           
     },

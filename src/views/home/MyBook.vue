@@ -15,7 +15,7 @@
             > </v-img>
 
             <v-card-title class="headline">
-              {{book.title}}
+              {{book.title.substring(0,30)}}
             </v-card-title>
 
             <v-card-subtitle>

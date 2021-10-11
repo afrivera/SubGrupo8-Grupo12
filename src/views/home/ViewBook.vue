@@ -2,16 +2,16 @@
   <v-container>
       <v-row no-gutters>
           <v-col sm="8" md="10"  lg="8" class="pa-4 mx-auto">
-              <v-card class="pa-2">
+              <v-card class="pa-2" max-height="600">
                   <v-img max-height="300" contain :src="book.imgStatus"></v-img>
-                  <v-card-actions>
-                      <v-row>
+                  <v-card-actions class="pb-0">
+                      <v-row class="mt-1 mx-1">
                           <v-col>
-                              <v-btn small outlined color="primary" disabled>{{book.bookStatus}}</v-btn>
+                              <v-btn small outlined color="primary" >{{book.bookStatus}}</v-btn>
                           </v-col>
                           <v-col sm="10" class="d-flex justify-end">
-                              <v-btn color="succes">Editar</v-btn>
-                              <v-btn color="red">Borrar</v-btn>
+                              <v-btn color="success" text>Editar</v-btn>
+                              <v-btn color="red" text @click="deleteBook()">Borrar</v-btn>
                           </v-col>
                       </v-row>
                   </v-card-actions>
@@ -30,7 +30,11 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
+    computed:{
+        ...mapState(['token', 'userDB'])
+    },
     data(){
         return{
             book: {}
@@ -38,6 +42,21 @@ export default {
         }
     },
     methods:{
+        async deleteBook(){
+            let config = {
+                headers:{
+                    token:this.token
+                }
+            }
+            const response = await this.axios.delete(`book/${this.$route.params.id}`, config)
+                .then(res=>{
+                    console.log(response);
+                    console.log(res.data);
+                    this.$router.push({ name: 'home' , params:{msg: response.message} })
+                })
+                .catch(e=> console.log(e)) 
+
+        }
     
     },
     async created(){

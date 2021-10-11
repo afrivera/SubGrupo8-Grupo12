@@ -165,16 +165,16 @@ export default {
       reset () {
         this.$refs.form.reset()
       },
-      addBook(){
+      async addBook(){
         let config = {
           headers:{
             token:this.token
           }
         }
-        this.axios.post('/new-book', this.formulario, config)
+        const response =await this.axios.post('/new-book', this.formulario, config)
         .then(res=>{
           console.log(res.data);
-            this.$router.push({ name: 'home' })
+          this.$router.push({ name: 'Home', params:{message: response.message} })
         })
         .catch(e=>{
           console.log(e.response);
