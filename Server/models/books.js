@@ -8,7 +8,7 @@ const estado = {
 
 const bookSchema = new Schema({
     userId:{type: String},
-    title:{type: String, maxlength:50, required: [true, 'Campo Obligatorio']},
+    title:{type: String, maxlength:100, required: [true, 'Campo Obligatorio']},
     isbn: {type: String, required: [true, 'Campo Obligatorio']},
     imgStatus: String,
     author:{type: String, required:[true, 'Campo Obligatorio']},

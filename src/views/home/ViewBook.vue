@@ -5,11 +5,11 @@
               <v-card class="pa-2" max-height="600">
                   <v-img max-height="300" contain :src="book.imgStatus"></v-img>
                   <v-card-actions class="pb-0">
-                      <v-row class="mt-1 mx-1">
+                      <v-row class="mt-1 mx-1" >
                           <v-col>
                               <v-btn small outlined color="primary" >{{book.bookStatus}}</v-btn>
                           </v-col>
-                          <v-col sm="10" class="d-flex justify-end">
+                          <v-col sm="10" class="d-flex justify-end" v-if="buttons">
                               <v-btn 
                                 color="success" text
                                 @click="goEdit()"
@@ -40,7 +40,8 @@ export default {
     },
     data(){
         return{
-            book: {}
+            book: {},
+            buttons:null
 
         }
     },
@@ -65,13 +66,23 @@ export default {
                 name:'edit-book', 
                 params:{id:this.book._id}
             })
+        },
+        async mostrarBotones(){
+            const response = await this.axios.get(`book/edit/${this.$route.params.id}`)
+            this.book = response.data
+            console.log(this.book.userId);
+            console.log(this.userDB.data._id);
+            if (this.book.userId=== this.userDB.data._id) {
+                this.buttons = true
+            }
         }
     
     },
     async created(){
-        const response = await this.axios.get(`book/edit/${this.$route.params.id}`)
+        /* const response = await this.axios.get(`book/edit/${this.$route.params.id}`)
         this.book = response.data
-        // console.log(this.book);
+        // console.log(this.book); */
+        this.mostrarBotones();
     }
 }
 </script>

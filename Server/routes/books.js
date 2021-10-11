@@ -97,8 +97,8 @@ router.put('/book/:id', verificarAuth, async(req, res) =>{
     const body = req.body
 
     try {
-        const bookDB = await Books.findByIdAndUpdate(_id, body, {new: true});
-        return res.json(bookDB);
+        await Books.findByIdAndUpdate(_id, body, {new: true});
+        return res.json({message:'Datos Actualizados Correctamente'});
         
     } catch (error) {
         res.status(400).json({

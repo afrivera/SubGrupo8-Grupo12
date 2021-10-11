@@ -76,8 +76,8 @@
       await this.bookList()
     },
     methods:{
-      bookList(){
-        this.axios.get('/book')
+      async bookList(){
+        await this.axios.get('/book')
           .then(res=>{
             // console.log(res.data);
             this.books = res.data;
