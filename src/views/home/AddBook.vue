@@ -134,14 +134,13 @@
 <script>
 import {mapState} from 'vuex'
 import axios from 'axios'
-import SimpleUpload from '../../components/SimpleUpload.vue';
 
 export default {
     name: 'AddBook',
     computed:{
         ...mapState(['token', 'userDB'])
     },
-    components: {SimpleUpload},
+    components: {},
     data: () => ({     
       valid: true,
       show: false,
