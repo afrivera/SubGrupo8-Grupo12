@@ -10,10 +10,11 @@ const bookSchema = new Schema({
     userId:{type: String},
     title:{type: String, maxlength:100, required: [true, 'Campo Obligatorio']},
     isbn: {type: String, required: [true, 'Campo Obligatorio']},
+    imgStatus: String,
     img: { data: Buffer, contentType: String },
     author:{type: String, required:[true, 'Campo Obligatorio']},
     bookStatus: {type: String, default: 'Disponible', enum:estado},
-    bookDescription: {type: String, maxlength:255},
+    bookDescription: String,
     statusDescription: {type: String, maxlength:255},
     createAt:{type:Date, default: Date.now}
 

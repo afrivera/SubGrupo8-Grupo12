@@ -218,7 +218,7 @@ export default {
         this.formulario.isbn = identifier
         this.formulario.author = authors[0]
         this.formulario.imgStatus = imageLinks.thumbnail
-        this.formulario.description = description
+        this.formulario.bookDescription = description
         // this.formulario.push(selecte)
         // console.log(this.formulario);
       }

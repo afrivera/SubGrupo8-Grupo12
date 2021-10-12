@@ -22,7 +22,7 @@
                       <h3>{{this.book.title}}</h3>
                   </v-card-subtitle>
                   <v-card-text class="gray--text">
-                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio aperiam cumque deleniti. Dolor ad totam eos ullam odit dolores. Illum distinctio modi hic tenetur, neque sequi consequuntur, aliquid quo, veniam numquam asperiores delectus magnam! Similique, soluta provident eius nobis totam rerum reprehenderit assumenda itaque facilis, voluptas delectus aliquam repellendus optio.
+                      {{this.book.bookDescription}}
                   </v-card-text>
 
               </v-card>
@@ -70,7 +70,7 @@ export default {
         async mostrarBotones(){
             const response = await this.axios.get(`book/edit/${this.$route.params.id}`)
             this.book = response.data
-            console.log(this.book.userId);
+            console.log(this.book);
             console.log(this.userDB.data._id);
             if (this.book.userId=== this.userDB.data._id) {
                 this.buttons = true
