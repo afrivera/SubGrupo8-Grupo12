@@ -55,7 +55,7 @@ export default {
             await this.axios.delete(`book/${this.$route.params.id}`, config)
                 .then(res=>{
                     // console.log(response);
-                    console.log(res.data);
+                    // console.log(res.data);
                     this.$router.push({ name: 'home' , params:{message: res.data.message} })
                 })
                 .catch(e=> console.log(e)) 
@@ -70,8 +70,8 @@ export default {
         async mostrarBotones(){
             const response = await this.axios.get(`book/edit/${this.$route.params.id}`)
             this.book = response.data
-            console.log(this.book);
-            console.log(this.userDB.data._id);
+            // console.log(this.book);
+            // console.log(this.userDB.data._id);
             if (this.book.userId=== this.userDB.data._id) {
                 this.buttons = true
             }
