@@ -1,11 +1,10 @@
 <template>
-
-  <v-footer app dark padless class="mt-10" >
+  <v-footer app dark padless >
     <v-row class="black white--text text-center">
       <v-card-text>
         <v-btn
-          v-for="icon in icons"
-          :key="icon"
+          v-for="(icon, index) in icons"
+          :key="index"
           class="mx-4 white--text"
           icon
           :href="icon.url" :target="icon.target"
@@ -36,18 +35,18 @@ export default {
         },
         {
           name: 'fab fa-github',
-          url: "https://github.com/afrivera/SubGrupo1-Grupo59",
+          url: "",
           target: '_blank'        
         },
         {
           name: 'mdi-linkedin',
-          url: "https://sites.google.com/view/booksxchange/inicio",
+          url: "",
           target: '_blank'
         },
         
         {
           name: 'mdi-instagram',
-          url: "https://sites.google.com/view/booksxchange/inicio",
+          url: "",
           target: '_blank'
         }
       ],      
@@ -56,15 +55,11 @@ export default {
 </script>
 
 <style scoped>
-    a:link{
-      text-decoration: none;
-    }
     footer {
-        position: absolute;
+        position: relative;
         bottom: 0;
         left: 0;
         width: 100vw;
         height: 50px;
-        background-color: #8c191d !important;
     }
 </style>
