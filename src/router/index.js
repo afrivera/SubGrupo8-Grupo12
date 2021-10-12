@@ -10,6 +10,8 @@ import index from '../store/index'
 import Home from '../views/home/Home.vue'
 import PerfilView from '../views/home/PerfilView.vue'
 import AddBook from '../views/home/AddBook.vue'
+import EditBook from '../views/home/EditBook.vue'
+import ViewBook from '../views/home/ViewBook.vue'
 import MyBook from '../views/home/MyBook.vue'
 import LytSPA from '../layouts/LytSPA.vue'
 import NavBar from '../layouts/shared/NavBar.vue'
@@ -75,11 +77,6 @@ const routes = [
   
   {
     path: '/',
-    //name: 'LytSPA',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    //component: () => import(/* webpackChunkName: "LytSPA" */ '../layouts/LytSPA.vue'),
     component: LytSPA,
     meta: {requireAuth: true},
     children:[
@@ -101,7 +98,6 @@ const routes = [
       {
         name: 'AddBook',
         path: '/add-book',
-        component:() => import(/* webpackChunkName: "AddBook" */ '../views/home/AddBook.vue'),
         components:{
           allPages: AddBook
         }  
@@ -109,10 +105,23 @@ const routes = [
       {
         name: 'MyBook',
         path: '/my-book',
-        component:() => import(/* webpackChunkName: "MyBook" */ '../views/home/MyBook.vue'),
         components:{
           allPages: MyBook
         }   
+      },
+      {
+        name: 'ViewBook',
+        path: '/view-book/:id',
+        components:{
+          allPages: ViewBook
+        } 
+      },
+      {
+        name: 'edit-book',
+        path: '/edit-book/:id',
+        components:{
+          allPages: EditBook
+        } 
       }
     ]
   }

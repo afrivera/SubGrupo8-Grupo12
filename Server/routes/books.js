@@ -12,8 +12,8 @@ router.post('/new-book',verificarAuth, async(req, res)=>{
     body.userId = req.user._id
 
     try {
-        const bookDB = await Books.create(body);
-        return res.json(bookDB);
+        await Books.create(body);
+        res.json({message:'Libro Creado Exitosamente'});
 
     } catch (error) {
         res.status(500).json({
@@ -26,7 +26,7 @@ router.post('/new-book',verificarAuth, async(req, res)=>{
 //Obtener todos los libros
 router.get('/book', async(req, res)=>{
     try {
-        const bookDB = await Books.find();
+        const bookDB = await Books.find({},{createAt:0}).sort({'createAt':1});
         res.json(bookDB)
         
     } catch (error) {
@@ -53,6 +53,23 @@ router.get('/book/:userId',/* verificarAuth,  */async(req, res)=>{
         })          
     }
 });
+//get obtener libros por Id
+router.get('/book/edit/:id',/* verificarAuth, */  async(req, res)=>{
+
+    const _id = req.params.id
+    // res.json(_id) 
+
+    try {
+        const bookDB = await Books.findOne({_id});
+        res.json(bookDB)
+        
+    } catch (error) {
+        res.status(500).json({
+            msg: 'Ocurrio un error',
+            error
+        })          
+    }
+});
 
 //delete book
 router.delete('/book/:id', verificarAuth, async(req, res)=>{
@@ -64,7 +81,7 @@ router.delete('/book/:id', verificarAuth, async(req, res)=>{
                 msg: 'No se Encontró el id del libro'
             })
         }
-        res.json(bookDB)
+        res.json({message:'Libro Borrado Exitosamente'})
     } catch (error) {
         res.status(400).json({
 
@@ -80,8 +97,8 @@ router.put('/book/:id', verificarAuth, async(req, res) =>{
     const body = req.body
 
     try {
-        const bookDB = await Books.findByIdAndUpdate(_id, body, {new: true});
-        return res.json(bookDB);
+        await Books.findByIdAndUpdate(_id, body, {new: true});
+        return res.json({message:'Datos Actualizados Correctamente'});
         
     } catch (error) {
         res.status(400).json({

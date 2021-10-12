@@ -1,19 +1,25 @@
 <template>
     <v-container fluid>
+      <v-alert border="left" close-text ="Cerrar Alerta" color="success" dark dismissible
+        v-if="this.$route.params.message"
+      >{{this.$route.params.message}}</v-alert>
       <v-row no-gutters>
         <v-col sm="4" class="pa-3" v-for="(book, index) in books" :key="index">
                   
           <v-card
             class="pa-1"
-            max-width="344"        
+            max-width="344"
+            :to="{name:'ViewBook', params:{id: books[index]._id}}"        
           >
             <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              :src='book.imgStatus'
               height="200px"
-            > {{book.imgStatus}}</v-img>
+              contain
+              
+            ></v-img>
 
             <v-card-title class="headline">
-              {{book.title}}
+              {{book.title.substring(0,25)+ '...'}}
             </v-card-title>
 
             <v-card-subtitle>
@@ -58,7 +64,7 @@
   
 
   export default {
-    name: 'Home',
+    name: 'home',
 
     components: {           
     },
@@ -66,15 +72,16 @@
       show: false,
       books:[]
     }),
-    created(){
-      this.bookList()
+    async created(){
+      await this.bookList()
     },
     methods:{
-      bookList(){
-        this.axios.get('/book')
+      async bookList(){
+        await this.axios.get('/book')
           .then(res=>{
             // console.log(res.data);
-            this.books = res.data; 
+            this.books = res.data;
+            // console.log(this.books);
           })
           .catch(e=>{
             console.log(e.response);

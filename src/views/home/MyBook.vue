@@ -5,15 +5,17 @@
                   
           <v-card
             class="pa-1"
-            max-width="344"        
+            max-width="344"
+            :to="{name:'ViewBook', params:{id: books[index]._id}}"        
           >
             <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              :src="book.imgStatus"
               height="200px"
-            > {{book.imgStatus}}</v-img>
+              contain
+            > </v-img>
 
             <v-card-title class="headline">
-              {{book.title}}
+              {{book.title.substring(0,30)}}
             </v-card-title>
 
             <v-card-subtitle>
@@ -82,7 +84,7 @@ import {mapState} from 'vuex'
         //   }
         // }
         const {_id} = this.userDB.data
-        console.log(_id);
+        // console.log(_id);
 
         this.axios.get(`/book/${_id}`)
           .then(res=>{

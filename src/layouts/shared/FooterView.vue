@@ -1,4 +1,5 @@
 <template>
+
   <v-footer app dark padless >
     <v-row class="black white--text text-center">
       <v-card-text>

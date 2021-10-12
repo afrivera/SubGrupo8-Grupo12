@@ -84,7 +84,7 @@ export default {
                     icon: 'user-tag',
                     title: 'Mi Perfil',
                     route: 'perfil'
-                },
+                }
             ],
         }
     },
