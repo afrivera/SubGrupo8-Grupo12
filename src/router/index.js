@@ -14,7 +14,6 @@ import EditBook from '../views/home/EditBook.vue'
 import ViewBook from '../views/home/ViewBook.vue'
 import MyBook from '../views/home/MyBook.vue'
 import LytSPA from '../layouts/LytSPA.vue'
-import NavBar from '../layouts/shared/NavBar.vue'
 import About from '../views/About.vue'
 
 Vue.use(VueRouter)
@@ -68,13 +67,6 @@ const routes = [
       }
     ]
   },
-  
-  {
-    path: '/NavBar',
-    name: 'barra-perfil',
-    component: NavBar
-  },
-  
   {
     path: '/',
     component: LytSPA,
