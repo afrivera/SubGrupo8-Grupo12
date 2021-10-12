@@ -1,8 +1,7 @@
 <template>
   <v-container fluid>
-
-    <v-row align-content="center" justify="center" no-gutters>
-      <v-col>
+    <v-row align-content="center" justify="center">
+      <v-col >
         <h1>Ingresar datos del libro</h1>
         <v-form
           ref="form"
@@ -10,8 +9,10 @@
           @submit.prevent="addBook()"
           >
           <v-text-field
+
             v-model="formulario.title"
             label="titulo del Libro"            
+
             required
           ></v-text-field>
 
@@ -27,6 +28,7 @@
             required
 
           ></v-text-field>
+
           <v-text-field
             v-model="formulario.imgStatus"
             label="Cargar Imagenes"
@@ -67,7 +69,7 @@
               placeholder="Título, autor"
               :counter="50"        
               label="Buscar libro"
-              required
+              
             >
               <v-icon slot="append">mdi-magnify</v-icon> 
             </v-text-field>   
@@ -83,7 +85,7 @@
       <v-col sm="5" class="pa-3" max-width="350" v-for="({imageLinks={thumbnail:'http://www.culturamas.es/wp-content/uploads/2015/11/libro.jpg'}, title, authors=['Desconocido'], description, industryIdentifiers=['Desconocido']} , index) in books" :key="index">
         <v-card class="pa-2" >
           
-          <v-img :src="imageLinks.thumbnail" max-height="200" contain>              
+          <v-img :src="imageLinks.thumbnail" max-height="200" contain>
           </v-img>
           
 
@@ -132,13 +134,15 @@
 <script>
 import {mapState} from 'vuex'
 import axios from 'axios'
+import SimpleUpload from '../../components/SimpleUpload.vue';
 
 export default {
     name: 'AddBook',
     computed:{
         ...mapState(['token', 'userDB'])
     },
-    data: () => ({
+    components: {SimpleUpload},
+    data: () => ({     
       valid: true,
       show: false,
       form:{
@@ -151,6 +155,7 @@ export default {
       },
       formulario : {},
       books:[]
+
       
     }),
     created(){
@@ -185,6 +190,7 @@ export default {
         this.books=[];
         const search = this.form.search;
         await axios.get('https://www.googleapis.com/books/v1/volumes?q='+ search +'+title')
+
         //.then (res => res.json())
         .then (res => {
           // console.log(search);
@@ -201,6 +207,7 @@ export default {
           // this.books = items;
           
         })
+
         .catch(e=> console.log(e))    
           
       },
@@ -216,7 +223,7 @@ export default {
         // this.formulario.push(selecte)
         // console.log(this.formulario);
       }
-      
+
     },
 }
 </script>

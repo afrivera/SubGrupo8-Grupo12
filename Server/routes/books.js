@@ -5,7 +5,7 @@ import Books from "../models/books";
 
 const {verificarAuth,verificarAdmin} = require('../middlewares/auth');
 
-//post agregar books
+//Agregar libro
 router.post('/new-book',verificarAuth, async(req, res)=>{
     const body = req.body;
 
@@ -23,7 +23,7 @@ router.post('/new-book',verificarAuth, async(req, res)=>{
     }
 });
 
-//get obtener  todos los libros
+//Obtener todos los libros
 router.get('/book', async(req, res)=>{
     try {
         const bookDB = await Books.find({},{createAt:0}).sort({'createAt':1});

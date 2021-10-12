@@ -1,12 +1,10 @@
 <template>
-    <v-app>
-            <HeaderView app/>           
-        <v-container fluid>
-           
-            <router-view name="allPages"></router-view>           
-
+    <v-app >
+        <HeaderView/>           
+        <v-container fluid >        
+            <router-view name="allPages"></router-view>
         </v-container>
-            <FooterView app/>
+        <FooterView/>
     </v-app>
   
 </template>
