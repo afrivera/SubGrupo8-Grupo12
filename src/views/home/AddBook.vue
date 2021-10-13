@@ -9,10 +9,8 @@
           @submit.prevent="addBook()"
           >
           <v-text-field
-
             v-model="formulario.title"
-            label="titulo del Libro"            
-
+            label="titulo del Libro"
             required
           ></v-text-field>
 
@@ -56,7 +54,7 @@
       </v-col>
     </v-row>
 
-    <v-row no-gutters>
+    <v-row class="mt-5">
       <v-col >
         <v-form
           ref="form"
@@ -101,7 +99,7 @@
             ISBN: {{industryIdentifiers[0].identifier}} 
           </v-card-text>
 
-          <v-btn color="success" @click="selectBook(index)">
+          <v-btn color="success" text @click="selectBook(index)">
             Seleccionar
           </v-btn>
 
@@ -149,21 +147,15 @@ export default {
         isbn:'',
         author:'',
         imgStatus:'',
-        search:''
-          
+        search:''          
       },
       formulario : {},
       books:[]
-
       
     }),
     created(){
       // console.log(this.userDB);
     },
-
-   /*  mounted() {
-      console.log("Hola mundo desde mounted");
-    }, */
 
     methods: {
       reset () {
@@ -190,7 +182,6 @@ export default {
         const search = this.form.search;
         await axios.get('https://www.googleapis.com/books/v1/volumes?q='+ search +'+title')
 
-        //.then (res => res.json())
         .then (res => {
           // console.log(search);
           const {items} = res.data;
@@ -199,8 +190,8 @@ export default {
             const {thumbnail='http://www.culturamas.es/wp-content/uploads/2015/11/libro.jpg',} = imageLinks
             const {identifier='desconocido'} = industryIdentifiers
             console.table(title, authors, thumbnail,identifier,description); */
-            // console.log(element.volumeInfo);
             this.books.push(element.volumeInfo)
+            console.log(this.books);
           });
           // console.log(items);
           // this.books = items;
@@ -227,6 +218,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  h1{
+        font-size: 25px;
+    }
 </style>

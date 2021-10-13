@@ -9,14 +9,17 @@
           <v-card
             class="pa-1"
             max-width="344"
-            :to="{name:'ViewBook', params:{id: books[index]._id}}"        
-          >
+                    
+          >          
             <v-img
               :src='book.imgStatus'
               height="200px"
               contain
               
-            ></v-img>
+            ><v-col>
+                              <v-btn color="success" >{{book.bookStatus}}</v-btn>
+                          </v-col>
+            </v-img>
 
             <v-card-title class="headline">
               {{book.title.substring(0,25)+ '...'}}
@@ -30,6 +33,7 @@
               <v-btn
                 color="orange lighten-2"
                 text
+                :to="{name:'ViewBook', params:{id: books[index]._id}}"
               >
                 Explore
               </v-btn>

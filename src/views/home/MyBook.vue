@@ -6,7 +6,7 @@
           <v-card
             class="pa-1"
             max-width="344"
-            :to="{name:'ViewBook', params:{id: books[index]._id}}"        
+                    
           >
             <v-img
               :src="book.imgStatus"
@@ -19,15 +19,20 @@
             </v-card-title>
 
             <v-card-subtitle>
-              {{book.author}}1,000 miles of wonder
+              Autor: {{book.author}}
             </v-card-subtitle>
+
+            <v-card-text class="py-0">
+              ISBN: {{book.isbn}}
+            </v-card-text>
 
             <v-card-actions>
               <v-btn
-                color="orange lighten-2"
+                color="success"
                 text
+                :to="{name:'ViewBook', params:{id: books[index]._id}}"
               >
-                Explore
+                Editar libro
               </v-btn>
 
               <v-spacer></v-spacer>
@@ -45,7 +50,7 @@
                 <v-divider></v-divider>
 
                 <v-card-text class="py-0">
-                  {{book.isbn}}
+                  {{book.bookDescription}}
                 </v-card-text>
               </div>
             </v-expand-transition>
@@ -88,7 +93,8 @@ import {mapState} from 'vuex'
 
         this.axios.get(`/book/${_id}`)
           .then(res=>{
-            this.books = res.data; 
+            this.books = res.data;
+            console.log(this.books);
           })
           .catch(e=>{
             console.log(e.response);

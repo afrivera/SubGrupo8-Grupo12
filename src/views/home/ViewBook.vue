@@ -2,7 +2,7 @@
   <v-container>
       <v-row no-gutters>
           <v-col sm="8" md="10"  lg="8" class="pa-4 mx-auto">
-              <v-card class="pa-2" max-height="600">
+              <v-card class="pa-2">
                   <v-img max-height="300" contain :src="book.imgStatus"></v-img>
                   <v-card-actions class="pb-0">
                       <v-row class="mt-1 mx-1" >
@@ -16,14 +16,27 @@
                               >Editar</v-btn>
                               <v-btn color="red" text @click="deleteBook()">Borrar</v-btn>
                           </v-col>
+                          
                       </v-row>
                   </v-card-actions>
                   <v-card-subtitle class="headline">
                       <h3>{{this.book.title}}</h3>
                   </v-card-subtitle>
-                  <v-card-text class="gray--text">
+                  <v-btn icon @click="show = !show">
+                        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                    </v-btn>
+                  <!-- <v-card-text class="gray--text">
                       {{this.book.bookDescription}}
-                  </v-card-text>
+                  </v-card-text> -->
+                <v-expand-transition mode="in-out">
+                    <div v-show="show">
+                        <v-divider></v-divider>
+
+                        <v-card-text class="py-0 ma-2">
+                            {{this.book.bookDescription}}
+                        </v-card-text>
+                    </div>
+                </v-expand-transition>
 
               </v-card>
 
@@ -41,7 +54,8 @@ export default {
     data(){
         return{
             book: {},
-            buttons:null
+            buttons:null,
+            show: false,
 
         }
     },
